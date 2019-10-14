@@ -86,7 +86,7 @@ class MyPromise {
      */
     static reject(value) {
         let promise = new MyPromise()
-        promise._state = 'rejected'
+        promise._status = 'rejected'
         promise._value = value
         return promise
     }
@@ -295,7 +295,7 @@ function resolve(promise, value) {
         // 使用resolve时，如果传入的是一个promise对象，promise对象的状态会传递给当前promise对象
         if (value instanceof MyPromise) {
             // 传递状态
-            promise._status = value._state
+            promise._status = value._status
             // 传递值
             promise._value = value._value
             if (value._status !== 'pending') {
